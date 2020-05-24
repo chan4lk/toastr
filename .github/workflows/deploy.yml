@@ -26,6 +26,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
       - run: npm run build
+      - run: cp .npmrc dist/libs/core/.npmrc
       - run: cd dist/libs/core
       - run: npm pack
       - run: npm publish
