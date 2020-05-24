@@ -1,6 +1,10 @@
 {
   "name": "@chan4lk/toastr",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chan4lk/toastr.git"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9"
