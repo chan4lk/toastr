@@ -28,9 +28,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: cd dist/libs/core
-      - run: echo "registry=https://npm.pkg.github.com/" > ./.npmrc
-      - run: echo "@chan4lk:registry=https://npm.pkg.github.com/" > ./.npmrc
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ./.npmrc
+      - run: echo "@chan4lk:registry=https://npm.pkg.github.com/" > .npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
       - run: npm pack
       - run: npm publish
         env:
