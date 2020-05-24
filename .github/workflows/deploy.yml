@@ -27,11 +27,12 @@ jobs:
           scope: '@chan4lk'
       - run: npm ci
       - run: npm run build
-      - run: cd dist/libs/core
-      - run: echo "@chan4lk:registry=https://npm.pkg.github.com/" > .npmrc
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" > .npmrc
-      - run: npm pack
-      - run: npm publish
+      - run: |
+          cd dist/libs/core
+          echo "@chan4lk:registry=https://npm.pkg.github.com/" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }}" > .npmrc
+          npm pack
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TOKEN }}
           CI: true
