@@ -6,7 +6,6 @@ import {
   Inject,
   Output,
   EventEmitter,
-  HostBinding,
 } from '@angular/core';
 import { CLOSE_LABEL } from '../../models/Token';
 import { ToastrItem } from '../../models/ToastrItem';

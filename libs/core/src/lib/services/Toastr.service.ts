@@ -5,11 +5,9 @@ import {
   ApplicationRef,
   Injector,
   EmbeddedViewRef,
-  Inject,
 } from '@angular/core';
 import { ToastrItem } from '../models/ToastrItem';
 import { ContainerComponent } from '../components/container/container.component';
-import { DOCUMENT } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class ToastrService {
@@ -21,8 +19,7 @@ export class ToastrService {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector,
-    @Inject(DOCUMENT) private document: Document
+    private injector: Injector
   ) {}
 
   show(items: ToastrItem[] | ToastrItem) {
@@ -40,11 +37,11 @@ export class ToastrService {
   }
 
   private addContainer() {
-    const isInserted = this.document.getElementById(ToastrService.WRAPPER_ID);
+    const isInserted = document.getElementById(ToastrService.WRAPPER_ID);
     if (!isInserted) {
       const container = document.createElement('div');
       container.id = ToastrService.WRAPPER_ID;
-      this.document.body.insertBefore(container, this.document.body.firstChild);
+      document.body.insertBefore(container, document.body.firstChild);
       this.createComponent(container);
     }
   }
