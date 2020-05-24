@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { ToastrItem } from '../../models/ToastrItem';
 
 @Component({
   selector: 'ts-container',
@@ -8,9 +9,15 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
+  @Input() items: ToastrItem[] = [];
+  @Output() closed = new EventEmitter<ToastrItem>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  close(item: ToastrItem){
+    this.closed.emit(item);
   }
 
 }

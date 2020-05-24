@@ -1,13 +1,20 @@
-<div class="container">
-    <div class="warning">
-        <div class="warning-item item flex">
-            <div class="message col">The quick brown fox jumps over the lazy dog.</div>
-            <div class="close col">close</div>
-        </div>
-    </div>
-    <div class="success">
-        <div class="success-item item">
-            <span class="message">The quick brown fox jumps over the lazy dog.</span>
-        </div>
-    </div>
+<div class="toastr-container">
+  <div class="warning">
+    <ng-container *ngFor="let item of items">
+      <ts-warning-item
+        *ngIf="!item.isSuccessMessage"
+        [item]="item"
+        (closed)="close(item)"
+      ></ts-warning-item>
+    </ng-container>
+  </div>
+  <div class="success">
+    <ng-container *ngFor="let item of items">
+        <ts-success-item
+          *ngIf="item.isSuccessMessage"
+          [item]="item"
+          (closed)="close(item)"
+        ></ts-success-item>
+      </ng-container>
+  </div>
 </div>

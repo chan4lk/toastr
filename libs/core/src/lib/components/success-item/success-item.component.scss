@@ -1,0 +1,24 @@
+@import '../../../variables.scss';
+
+.flex {
+  display: flex;
+
+  .col {
+    flex: 1;
+  }
+}
+
+.success-item {
+  background: $success;
+}
+
+.item {
+  min-height: 6rem;
+  padding: 0.85rem 2.13rem;
+  border-radius: 5px;
+  border: 0;
+  -webkit-transition: 0.2s ease-out;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+  word-wrap: break-word;
+}

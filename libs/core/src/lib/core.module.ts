@@ -1,10 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './components/container/container.component';
+import { WarningItemComponent } from './components/warning-item/warning-item.component';
+import { SuccessItemComponent } from './components/success-item/success-item.component';
+import { CLOSE_LABEL, CLOSE_TIME } from './models/Token';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [ContainerComponent],
-  exports: [ContainerComponent]
+  declarations: [ContainerComponent, WarningItemComponent, SuccessItemComponent],
+  exports: [ContainerComponent, WarningItemComponent, SuccessItemComponent],
+  providers: [
+    {
+      provide: CLOSE_LABEL,
+      useValue: 'close'
+    },
+    {
+      provide: CLOSE_TIME,
+      useValue: 300
+    }
+  ]
 })
 export class CoreModule {}
