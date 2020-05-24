@@ -6,29 +6,32 @@ import {
   Inject,
   Output,
   EventEmitter,
+  HostBinding,
 } from '@angular/core';
 import { CLOSE_LABEL } from '../../models/Token';
 import { ToastrItem } from '../../models/ToastrItem';
+import { SlideInOut } from '../animations';
 
 @Component({
   selector: 'ts-warning-item',
   templateUrl: './warning-item.component.html',
   styleUrls: ['./warning-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [SlideInOut],
 })
 export class WarningItemComponent implements OnInit {
-
   @Input() item: ToastrItem = { isSuccessMessage: true, message: '' };
   @Output() closed = new EventEmitter<ToastrItem>();
+  state = 'visible';
 
-  constructor(@Inject(CLOSE_LABEL)public closeLabel: string = 'close') {
-  }
+  constructor(@Inject(CLOSE_LABEL) public closeLabel: string = 'close') {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   close() {
-    this.closed.emit(this.item);
+    this.state = 'hidden';
+    setTimeout(() => {
+      this.closed.emit(this.item);
+    }, 300);
   }
 }
