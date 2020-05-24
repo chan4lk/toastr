@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { ToastrItem } from '@chan4lk/toastr/core';
+import { Component, OnInit } from '@angular/core';
+import { ToastrItem, ToastrService } from '@chan4lk/toastr/core';
 
 @Component({
   selector: 'toastr-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
   title = 'demo';
   items: ToastrItem[] = [
     {
@@ -26,4 +27,14 @@ export class AppComponent {
       isSuccessMessage: false,
     },
   ];
+
+  constructor(private toastr: ToastrService){
+
+  }
+
+
+
+  ngOnInit(): void {
+    this.toastr.show(this.items);
+  }
 }
