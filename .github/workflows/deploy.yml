@@ -24,9 +24,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@chan4lk'
       - run: npm ci
       - run: npm run build
-      - run: cp .npmrc dist/libs/core/.npmrc
+      - run: ls
       - run: cd dist/libs/core
       - run: npm pack
       - run: npm publish
