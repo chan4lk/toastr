@@ -24,16 +24,7 @@ export class ToastrService {
 
   show(items: ToastrItem[] | ToastrItem) {
     this.addContainer();
-    if(Array.isArray(items)){
-        this.addItems(items);
-    }else {
-        this.addItems([items]);
-    }
-  }
-
-  private addItems(items: ToastrItem[]){
-     this.items = [...this.items, ...items];
-     this.componentRef.instance.items = this.items;
+    this.componentRef.instance.show(items);
   }
 
   private addContainer() {
@@ -59,11 +50,5 @@ export class ToastrService {
     container.appendChild(domElem);
 
     this.componentRef = componentRef;
-    this.componentRef.instance.items = this.items;
-    this.componentRef.instance.closed.subscribe(item => {
-        const index = this.items.findIndex(i => i === item);
-        this.items.splice(index, 1);
-        this.componentRef.instance.items = this.items;
-    })
   }
 }

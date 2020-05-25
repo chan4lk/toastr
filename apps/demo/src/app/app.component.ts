@@ -6,35 +6,25 @@ import { ToastrItem, ToastrService } from '@chan4lk/toastr/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
-  
-  title = 'demo';
-  items: ToastrItem[] = [
-    {
-      message: 'Test item 1',
-      isSuccessMessage: true,
-    },
-    {
-      message: 'Test item 2',
-      isSuccessMessage: true,
-    },
-    {
-      message: 'Test item 3',
+export class AppComponent {
+  constructor(private toastr: ToastrService) {
+    this.toastr.show({
+      message: 'Test message',
       isSuccessMessage: false,
-    },
-    {
-      message: 'Test item 4',
-      isSuccessMessage: false,
-    },
-  ];
-
-  constructor(private toastr: ToastrService){
-
+    });
   }
 
+  warning(){
+    this.toastr.show({
+      message: 'Test warning message',
+      isSuccessMessage: false,
+    });
+  }
 
-
-  ngOnInit(): void {
-    this.toastr.show(this.items);
+  success(){
+    this.toastr.show({
+      message: 'Test sucess message',
+      isSuccessMessage: true,
+    });
   }
 }

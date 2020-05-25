@@ -1,7 +1,33 @@
-# core
+# Toastr
 
-This library was generated with [Nx](https://nx.dev).
+## Install
+```bash
+npm install @chan4lk/toastr
+```
 
-## Running unit tests
+## Configure
+```typescript
+import { ToastrCoreModule, CLOSE_LABEL } from '@chan4lk/toastr/core';
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, ToastrCoreModule],
+  providers: [{
+    provide: CLOSE_LABEL,
+    useValue: 'hide'
+  },],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-Run `nx test core` to execute the unit tests.
+## Show Message
+```typescript
+export class AppComponent {
+  constructor(private toastr: ToastrService) {
+    this.toastr.show({
+      message: 'Test message',
+      isSuccessMessage: false,
+    });
+  }
+}
+```
